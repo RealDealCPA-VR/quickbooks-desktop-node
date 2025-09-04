@@ -1,20 +1,33 @@
+'use strict';
+
+const versionRegex = /^(\d+)\.(\d+)\.(\d+)/;
 const fs = require('fs');
 const path = require('path');
 
-const main = () => {
-  const pkg = require('../../package.json');
-  const version = pkg['version'];
-  if (!version) throw 'The version property is not set in the package.json file';
-  if (typeof version !== 'string') {
-    throw `Unexpected type for the package.json version field; got ${typeof version}, expected string`;
+const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', 'package.json'), 'utf8'));
+const packageVersion = packageJson.version;
+
+if (!versionRegex.test(packageVersion)) {
+  throw new Error(`Invalid package version: ${packageVersion}`);
+}
+
+const nodeVersion = process.versions.node.match(versionRegex);
+if (!nodeVersion) {
+  throw new Error('Invalid Node.js version');
+}
+
+const nodeMajor = parseInt(nodeVersion[1], 10);
+if (nodeMajor < 18) {
+  throw new Error('Node.js version must be at least 18.00.0');
+}
+
+const packageEngines = packageJson.engines || {};
+if (packageEngines.node) {
+  const enginesVersion = packageEngines.node.match(versionRegex);
+  if (!enginesVersion) {
+    throw new Error(`Invalid node version in engines: ${packageEngines.node}`);
   }
-
-  const versionFile = path.resolve(__dirname, '..', '..', 'src', 'version.ts');
-  const contents = fs.readFileSync(versionFile, 'utf8');
-  const output = contents.replace(/(export const VERSION = ')(.*)(')/g, `$1${version}$3`);
-  fs.writeFileSync(versionFile, output);
-};
-
-if (require.main === module) {
-  main();
+  if (parseInt(enginesVersion[1], 10) > nodeMajor) {
+    throw new Error(`Node.js version (${nodeVersion[0]}) is below the minimum version required by package engines (${enginesVersion[0]})`);
+  }
 }
