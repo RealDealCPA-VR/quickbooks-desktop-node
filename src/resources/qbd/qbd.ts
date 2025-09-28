@@ -114,6 +114,17 @@ import {
   CreditCardCredits,
   CreditCardCreditsCursorPage,
 } from './credit-card-credits';
+import * as CreditCardRefundsAPI from './credit-card-refunds';
+import {
+  CreditCardRefund,
+  CreditCardRefundCreateParams,
+  CreditCardRefundDeleteParams,
+  CreditCardRefundDeleteResponse,
+  CreditCardRefundListParams,
+  CreditCardRefundRetrieveParams,
+  CreditCardRefunds,
+  CreditCardRefundsCursorPage,
+} from './credit-card-refunds';
 import * as CreditMemosAPI from './credit-memos';
 import {
   CreditMemo,
@@ -126,6 +137,16 @@ import {
   CreditMemos,
   CreditMemosCursorPage,
 } from './credit-memos';
+import * as CurrenciesAPI from './currencies';
+import {
+  Currencies,
+  Currency,
+  CurrencyCreateParams,
+  CurrencyListParams,
+  CurrencyListResponse,
+  CurrencyRetrieveParams,
+  CurrencyUpdateParams,
+} from './currencies';
 import * as CustomersAPI from './customers';
 import {
   Customer,
@@ -537,7 +558,11 @@ export class Qbd extends APIResource {
   creditCardCredits: CreditCardCreditsAPI.CreditCardCredits = new CreditCardCreditsAPI.CreditCardCredits(
     this._client,
   );
+  creditCardRefunds: CreditCardRefundsAPI.CreditCardRefunds = new CreditCardRefundsAPI.CreditCardRefunds(
+    this._client,
+  );
   creditMemos: CreditMemosAPI.CreditMemos = new CreditMemosAPI.CreditMemos(this._client);
+  currencies: CurrenciesAPI.Currencies = new CurrenciesAPI.Currencies(this._client);
   customers: CustomersAPI.Customers = new CustomersAPI.Customers(this._client);
   dateDrivenTerms: DateDrivenTermsAPI.DateDrivenTerms = new DateDrivenTermsAPI.DateDrivenTerms(this._client);
   deletedListObjects: DeletedListObjectsAPI.DeletedListObjects = new DeletedListObjectsAPI.DeletedListObjects(
@@ -659,8 +684,11 @@ Qbd.CreditCardCharges = CreditCardCharges;
 Qbd.CreditCardChargesCursorPage = CreditCardChargesCursorPage;
 Qbd.CreditCardCredits = CreditCardCredits;
 Qbd.CreditCardCreditsCursorPage = CreditCardCreditsCursorPage;
+Qbd.CreditCardRefunds = CreditCardRefunds;
+Qbd.CreditCardRefundsCursorPage = CreditCardRefundsCursorPage;
 Qbd.CreditMemos = CreditMemos;
 Qbd.CreditMemosCursorPage = CreditMemosCursorPage;
+Qbd.Currencies = Currencies;
 Qbd.Customers = Customers;
 Qbd.CustomersCursorPage = CustomersCursorPage;
 Qbd.DateDrivenTerms = DateDrivenTerms;
@@ -849,6 +877,17 @@ export declare namespace Qbd {
   };
 
   export {
+    CreditCardRefunds as CreditCardRefunds,
+    type CreditCardRefund as CreditCardRefund,
+    type CreditCardRefundDeleteResponse as CreditCardRefundDeleteResponse,
+    CreditCardRefundsCursorPage as CreditCardRefundsCursorPage,
+    type CreditCardRefundCreateParams as CreditCardRefundCreateParams,
+    type CreditCardRefundRetrieveParams as CreditCardRefundRetrieveParams,
+    type CreditCardRefundListParams as CreditCardRefundListParams,
+    type CreditCardRefundDeleteParams as CreditCardRefundDeleteParams,
+  };
+
+  export {
     CreditMemos as CreditMemos,
     type CreditMemo as CreditMemo,
     type CreditMemoDeleteResponse as CreditMemoDeleteResponse,
@@ -858,6 +897,16 @@ export declare namespace Qbd {
     type CreditMemoUpdateParams as CreditMemoUpdateParams,
     type CreditMemoListParams as CreditMemoListParams,
     type CreditMemoDeleteParams as CreditMemoDeleteParams,
+  };
+
+  export {
+    Currencies as Currencies,
+    type Currency as Currency,
+    type CurrencyListResponse as CurrencyListResponse,
+    type CurrencyCreateParams as CurrencyCreateParams,
+    type CurrencyRetrieveParams as CurrencyRetrieveParams,
+    type CurrencyUpdateParams as CurrencyUpdateParams,
+    type CurrencyListParams as CurrencyListParams,
   };
 
   export {

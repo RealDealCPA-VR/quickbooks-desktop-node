@@ -1,5 +1,104 @@
 # Changelog
 
+## 12.36.0 (2025-09-24)
+
+Full Changelog: [v12.35.0...v12.36.0](https://github.com/conductor-is/quickbooks-desktop-node/compare/v12.35.0...v12.36.0)
+
+### Features
+
+* **mcp:** add option for including docs tools ([a8ec8dc](https://github.com/conductor-is/quickbooks-desktop-node/commit/a8ec8dceb7c5fd0fbbbec98902a7435ed4048a6f))
+* **mcp:** enable experimental docs search tool ([4039789](https://github.com/conductor-is/quickbooks-desktop-node/commit/4039789ae43e24a83e0082e3ee70019288195091))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([844274b](https://github.com/conductor-is/quickbooks-desktop-node/commit/844274b89d129598b9eba6d15e4def6034441b9c))
+
+## 12.35.0 (2025-09-19)
+
+Full Changelog: [v12.34.0...v12.35.0](https://github.com/conductor-is/quickbooks-desktop-node/compare/v12.34.0...v12.35.0)
+
+### Features
+
+* **mcp:** add docs search tool ([08b0a42](https://github.com/conductor-is/quickbooks-desktop-node/commit/08b0a428e8f8244f488b1e7abaeaefdda71d5fb0))
+
+
+### Chores
+
+* **codegen:** internal codegen update ([6a83300](https://github.com/conductor-is/quickbooks-desktop-node/commit/6a833009b877656caa60348b54f60916cb10ff3b))
+* **internal:** gitignore .mcpb files ([deaeba4](https://github.com/conductor-is/quickbooks-desktop-node/commit/deaeba4e54ff996818f28d5ce13ecd9fcc0c4049))
+
+## 12.34.0 (2025-09-18)
+
+Full Changelog: [v12.33.0...v12.34.0](https://github.com/conductor-is/quickbooks-desktop-node/compare/v12.33.0...v12.34.0)
+
+### Features
+
+* **api:** api update ([886901a](https://github.com/conductor-is/quickbooks-desktop-node/commit/886901a6ccb88823f1e752b64312ff5ab99009ef))
+
+
+### Chores
+
+* **mcp:** rename dxt to mcpb ([5bd72f8](https://github.com/conductor-is/quickbooks-desktop-node/commit/5bd72f8df7952104a0f08628b2bf240c4f38e567))
+
+## 12.33.0 (2025-09-17)
+
+Full Changelog: [v12.32.0...v12.33.0](https://github.com/conductor-is/quickbooks-desktop-node/compare/v12.32.0...v12.33.0)
+
+### Features
+
+* **api:** api update ([7a93ab6](https://github.com/conductor-is/quickbooks-desktop-node/commit/7a93ab638483e744d09a60042b7d67d13ef86ecb))
+
+
+### Bug Fixes
+
+* **ci:** set permissions for DXT publish action ([91974a0](https://github.com/conductor-is/quickbooks-desktop-node/commit/91974a0ade920a844fd5de7da42ffc7b56467c1b))
+
+## 12.32.0 (2025-09-16)
+
+Full Changelog: [v12.31.1...v12.32.0](https://github.com/conductor-is/quickbooks-desktop-node/compare/v12.31.1...v12.32.0)
+
+### Features
+
+* **api:** api update ([f119b09](https://github.com/conductor-is/quickbooks-desktop-node/commit/f119b0992bf357215a16289efdcb23c4a57dad29))
+
+## 12.31.1 (2025-09-12)
+
+Full Changelog: [v12.31.0...v12.31.1](https://github.com/conductor-is/quickbooks-desktop-node/compare/v12.31.0...v12.31.1)
+
+### Bug Fixes
+
+* coerce nullable values to undefined ([e308428](https://github.com/conductor-is/quickbooks-desktop-node/commit/e3084284be693103d3bf2f33afa039d8237e5068))
+
+
+### Chores
+
+* **internal:** codegen related update ([a58c26e](https://github.com/conductor-is/quickbooks-desktop-node/commit/a58c26e7e83522052668f2f01f157c8be4ee06a0))
+* **internal:** codegen related update ([5ad6ea8](https://github.com/conductor-is/quickbooks-desktop-node/commit/5ad6ea8517a0ec18bc0249e0a6c671ee90df4068))
+
+## 12.31.0 (2025-09-05)
+
+Full Changelog: [v12.30.0...v12.31.0](https://github.com/conductor-is/quickbooks-desktop-node/compare/v12.30.0...v12.31.0)
+
+### Features
+
+* **api:** api update ([2bf3d17](https://github.com/conductor-is/quickbooks-desktop-node/commit/2bf3d17a29074fd5cbbdbbc05f26a7d0b4c108fb))
+* **mcp:** add mcp bundles to build script ([2d26370](https://github.com/conductor-is/quickbooks-desktop-node/commit/2d26370c6be8be16afbf899f575bf282dd305a19))
+* **mcp:** allow setting logging level ([8aee864](https://github.com/conductor-is/quickbooks-desktop-node/commit/8aee864a595e780518f3c89948f4e3f444af538b))
+* **mcp:** expose client options in `streamableHTTPApp` ([cf599f0](https://github.com/conductor-is/quickbooks-desktop-node/commit/cf599f05d730027b3761fc019ff589ac8d329242))
+
+
+### Bug Fixes
+
+* **mcp:** fix query options parsing ([2d72025](https://github.com/conductor-is/quickbooks-desktop-node/commit/2d7202575d5ccf54ec40c85ca547b0c4ad6d5bbb))
+
+
+### Chores
+
+* ci build action ([364d10b](https://github.com/conductor-is/quickbooks-desktop-node/commit/364d10bc14527498e97a4a52b5712b81d3846e0f))
+* **internal:** codegen related update ([a63bce0](https://github.com/conductor-is/quickbooks-desktop-node/commit/a63bce01884e6d235b1d191831396ba1821f615a))
+* **internal:** codegen related update ([e410a90](https://github.com/conductor-is/quickbooks-desktop-node/commit/e410a90e1702a2a8459369e395993e0a998a0fea))
+
 ## 12.30.0 (2025-08-27)
 
 Full Changelog: [v12.29.0...v12.30.0](https://github.com/conductor-is/quickbooks-desktop-node/compare/v12.29.0...v12.30.0)

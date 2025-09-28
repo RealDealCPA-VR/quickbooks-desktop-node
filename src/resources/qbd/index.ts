@@ -102,6 +102,16 @@ export {
   type CreditCardCreditDeleteParams,
 } from './credit-card-credits';
 export {
+  CreditCardRefundsCursorPage,
+  CreditCardRefunds,
+  type CreditCardRefund,
+  type CreditCardRefundDeleteResponse,
+  type CreditCardRefundCreateParams,
+  type CreditCardRefundRetrieveParams,
+  type CreditCardRefundListParams,
+  type CreditCardRefundDeleteParams,
+} from './credit-card-refunds';
+export {
   CreditMemosCursorPage,
   CreditMemos,
   type CreditMemo,
@@ -112,6 +122,15 @@ export {
   type CreditMemoListParams,
   type CreditMemoDeleteParams,
 } from './credit-memos';
+export {
+  Currencies,
+  type Currency,
+  type CurrencyListResponse,
+  type CurrencyCreateParams,
+  type CurrencyRetrieveParams,
+  type CurrencyUpdateParams,
+  type CurrencyListParams,
+} from './currencies';
 export {
   CustomersCursorPage,
   Customers,

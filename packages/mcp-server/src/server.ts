@@ -5,8 +5,8 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { Endpoint, endpoints, HandlerFunction, query } from './tools';
 import {
   CallToolRequestSchema,
-  Implementation,
   ListToolsRequestSchema,
+  Implementation,
   Tool,
 } from '@modelcontextprotocol/sdk/types.js';
 import { ClientOptions } from 'conductor-node';
@@ -20,6 +20,7 @@ import {
 } from './compat';
 import { dynamicTools } from './dynamic-tools';
 import { codeTool } from './code-tool';
+import docsSearchTool from './docs-search-tool';
 import { McpOptions } from './options';
 
 export { McpOptions } from './options';
@@ -32,7 +33,7 @@ export const newMcpServer = () =>
   new McpServer(
     {
       name: 'conductor_node_api',
-      version: '12.30.0',
+      version: '12.36.0',
     },
     { capabilities: { tools: {}, logging: {} } },
   );
@@ -55,7 +56,7 @@ export function initMcpServer(params: {
   let providedEndpoints: Endpoint[] | null = null;
   let endpointMap: Record<string, Endpoint> | null = null;
 
-  const initTools = (implementation?: Implementation) => {
+  const initTools = async (implementation?: Implementation) => {
     if (implementation && (!mcpOptions.client || mcpOptions.client === 'infer')) {
       mcpOptions.client =
         implementation.name.toLowerCase().includes('claude') ? 'claude'
@@ -66,8 +67,8 @@ export function initMcpServer(params: {
         ...mcpOptions.capabilities,
       };
     }
-    providedEndpoints = selectTools(endpoints, mcpOptions);
-    endpointMap = Object.fromEntries(providedEndpoints.map((endpoint) => [endpoint.tool.name, endpoint]));
+    providedEndpoints ??= await selectTools(endpoints, mcpOptions);
+    endpointMap ??= Object.fromEntries(providedEndpoints.map((endpoint) => [endpoint.tool.name, endpoint]));
   };
 
   const client = new Conductor({
@@ -80,7 +81,7 @@ export function initMcpServer(params: {
 
   server.setRequestHandler(ListToolsRequestSchema, async () => {
     if (providedEndpoints === null) {
-      initTools(server.getClientVersion());
+      await initTools(server.getClientVersion());
     }
     return {
       tools: providedEndpoints!.map((endpoint) => endpoint.tool),
@@ -89,7 +90,7 @@ export function initMcpServer(params: {
 
   server.setRequestHandler(CallToolRequestSchema, async (request) => {
     if (endpointMap === null) {
-      initTools(server.getClientVersion());
+      await initTools(server.getClientVersion());
     }
     const { name, arguments: args } = request.params;
     const endpoint = endpointMap![name];
@@ -104,10 +105,10 @@ export function initMcpServer(params: {
 /**
  * Selects the tools to include in the MCP Server based on the provided options.
  */
-export function selectTools(endpoints: Endpoint[], options?: McpOptions): Endpoint[] {
+export async function selectTools(endpoints: Endpoint[], options?: McpOptions): Promise<Endpoint[]> {
   const filteredEndpoints = query(options?.filters ?? [], endpoints);
 
-  let includedTools = filteredEndpoints;
+  let includedTools = filteredEndpoints.slice();
 
   if (includedTools.length > 0) {
     if (options?.includeDynamicTools) {
@@ -115,16 +116,18 @@ export function selectTools(endpoints: Endpoint[], options?: McpOptions): Endpoi
     }
   } else {
     if (options?.includeAllTools) {
-      includedTools = endpoints;
+      includedTools = endpoints.slice();
     } else if (options?.includeDynamicTools) {
       includedTools = dynamicTools(endpoints);
     } else if (options?.includeCodeTools) {
-      includedTools = [codeTool()];
+      includedTools = [await codeTool()];
     } else {
-      includedTools = endpoints;
+      includedTools = endpoints.slice();
     }
   }
-
+  if (options?.includeDocsTools ?? true) {
+    includedTools.push(docsSearchTool);
+  }
   const capabilities = { ...defaultClientCapabilities, ...options?.capabilities };
   return applyCompatibilityTransformations(includedTools, capabilities);
 }

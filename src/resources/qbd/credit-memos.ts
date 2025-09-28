@@ -294,9 +294,7 @@ export interface CreditMemo {
    * default A/R account.
    *
    * **IMPORTANT**: If this credit memo is linked to other transactions, this A/R
-   * account must match the `receivablesAccount` used in all linked transactions. For
-   * example, when refunding a credit card payment, the A/R account must match the
-   * one used in the original credit transactions being refunded.
+   * account must match the `receivablesAccount` used in all linked transactions.
    */
   receivablesAccount: CreditMemo.ReceivablesAccount | null;
 
@@ -1505,7 +1503,8 @@ export namespace CreditMemo {
       | 'sales_tax_payment_check'
       | 'transfer'
       | 'vendor_credit'
-      | 'ytd_adjustment';
+      | 'ytd_adjustment'
+      | 'unknown';
   }
 
   /**
@@ -1514,9 +1513,7 @@ export namespace CreditMemo {
    * default A/R account.
    *
    * **IMPORTANT**: If this credit memo is linked to other transactions, this A/R
-   * account must match the `receivablesAccount` used in all linked transactions. For
-   * example, when refunding a credit card payment, the A/R account must match the
-   * one used in the original credit transactions being refunded.
+   * account must match the `receivablesAccount` used in all linked transactions.
    */
   export interface ReceivablesAccount {
     /**
@@ -1851,9 +1848,7 @@ export interface CreditMemoCreateParams {
    * will use its default A/R account.
    *
    * **IMPORTANT**: If this credit memo is linked to other transactions, this A/R
-   * account must match the `receivablesAccount` used in all linked transactions. For
-   * example, when refunding a credit card payment, the A/R account must match the
-   * one used in the original credit transactions being refunded.
+   * account must match the `receivablesAccount` used in all linked transactions.
    */
   receivablesAccountId?: string;
 
@@ -2460,9 +2455,7 @@ export interface CreditMemoUpdateParams {
    * will use its default A/R account.
    *
    * **IMPORTANT**: If this credit memo is linked to other transactions, this A/R
-   * account must match the `receivablesAccount` used in all linked transactions. For
-   * example, when refunding a credit card payment, the A/R account must match the
-   * one used in the original credit transactions being refunded.
+   * account must match the `receivablesAccount` used in all linked transactions.
    */
   receivablesAccountId?: string;
 

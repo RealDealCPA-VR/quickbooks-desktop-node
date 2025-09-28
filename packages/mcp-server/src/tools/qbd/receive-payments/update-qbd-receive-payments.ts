@@ -15,7 +15,8 @@ export const metadata: Metadata = {
 
 export const tool: Tool = {
   name: 'update_qbd_receive_payments',
-  description: 'Updates an existing receive-payment.',
+  description:
+    'Updates a received payment. When you resubmit applications to invoices, keep them on the same accounts receivable account and include the payment amount, discount, or credit on every allocation you send.',
   inputSchema: {
     type: 'object',
     properties: {
@@ -252,7 +253,7 @@ export const tool: Tool = {
       receivablesAccountId: {
         type: 'string',
         description:
-          'The Accounts-Receivable (A/R) account to which this receive-payment is assigned, used to track the amount owed. If not specified, QuickBooks Desktop will use its default A/R account.\n\n**IMPORTANT**: If this receive-payment is linked to other transactions, this A/R account must match the `receivablesAccount` used in all linked transactions. For example, when refunding a credit card payment, the A/R account must match the one used in the original credit transactions being refunded.',
+          'The Accounts-Receivable (A/R) account to which this receive-payment is assigned, used to track the amount owed. If not specified, QuickBooks Desktop will use its default A/R account.\n\n**IMPORTANT**: If this receive-payment is linked to other transactions, this A/R account must match the `receivablesAccount` used in all linked transactions.',
       },
       refNumber: {
         type: 'string',

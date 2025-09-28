@@ -15,7 +15,8 @@ export const metadata: Metadata = {
 
 export const tool: Tool = {
   name: 'create_qbd_invoices',
-  description: 'Creates a new invoice.',
+  description:
+    'Creates an invoice to bill a customer when goods or services were delivered before payment. Use a sales receipt instead if the sale was paid in full.',
   inputSchema: {
     type: 'object',
     properties: {
@@ -392,7 +393,7 @@ export const tool: Tool = {
       receivablesAccountId: {
         type: 'string',
         description:
-          'The Accounts-Receivable (A/R) account to which this invoice is assigned, used to track the amount owed. If not specified, QuickBooks Desktop will use its default A/R account.\n\n**IMPORTANT**: If this invoice is linked to other transactions, this A/R account must match the `receivablesAccount` used in all linked transactions. For example, when refunding a credit card payment, the A/R account must match the one used in the original credit transactions being refunded.',
+          'The Accounts-Receivable (A/R) account to which this invoice is assigned, used to track the amount owed. If not specified, QuickBooks Desktop will use its default A/R account.\n\n**IMPORTANT**: If this invoice is linked to other transactions, this A/R account must match the `receivablesAccount` used in all linked transactions.',
       },
       refNumber: {
         type: 'string',

@@ -188,6 +188,20 @@ Methods:
 - <code title="get /quickbooks-desktop/credit-card-credits">client.qbd.creditCardCredits.<a href="./src/resources/qbd/credit-card-credits.ts">list</a>({ ...params }) -> CreditCardCreditsCursorPage</code>
 - <code title="delete /quickbooks-desktop/credit-card-credits/{id}">client.qbd.creditCardCredits.<a href="./src/resources/qbd/credit-card-credits.ts">delete</a>(id, { ...params }) -> CreditCardCreditDeleteResponse</code>
 
+## CreditCardRefunds
+
+Types:
+
+- <code><a href="./src/resources/qbd/credit-card-refunds.ts">CreditCardRefund</a></code>
+- <code><a href="./src/resources/qbd/credit-card-refunds.ts">CreditCardRefundDeleteResponse</a></code>
+
+Methods:
+
+- <code title="post /quickbooks-desktop/credit-card-refunds">client.qbd.creditCardRefunds.<a href="./src/resources/qbd/credit-card-refunds.ts">create</a>({ ...params }) -> CreditCardRefund</code>
+- <code title="get /quickbooks-desktop/credit-card-refunds/{id}">client.qbd.creditCardRefunds.<a href="./src/resources/qbd/credit-card-refunds.ts">retrieve</a>(id, { ...params }) -> CreditCardRefund</code>
+- <code title="get /quickbooks-desktop/credit-card-refunds">client.qbd.creditCardRefunds.<a href="./src/resources/qbd/credit-card-refunds.ts">list</a>({ ...params }) -> CreditCardRefundsCursorPage</code>
+- <code title="delete /quickbooks-desktop/credit-card-refunds/{id}">client.qbd.creditCardRefunds.<a href="./src/resources/qbd/credit-card-refunds.ts">delete</a>(id, { ...params }) -> CreditCardRefundDeleteResponse</code>
+
 ## CreditMemos
 
 Types:
@@ -202,6 +216,20 @@ Methods:
 - <code title="post /quickbooks-desktop/credit-memos/{id}">client.qbd.creditMemos.<a href="./src/resources/qbd/credit-memos.ts">update</a>(id, { ...params }) -> CreditMemo</code>
 - <code title="get /quickbooks-desktop/credit-memos">client.qbd.creditMemos.<a href="./src/resources/qbd/credit-memos.ts">list</a>({ ...params }) -> CreditMemosCursorPage</code>
 - <code title="delete /quickbooks-desktop/credit-memos/{id}">client.qbd.creditMemos.<a href="./src/resources/qbd/credit-memos.ts">delete</a>(id, { ...params }) -> CreditMemoDeleteResponse</code>
+
+## Currencies
+
+Types:
+
+- <code><a href="./src/resources/qbd/currencies.ts">Currency</a></code>
+- <code><a href="./src/resources/qbd/currencies.ts">CurrencyListResponse</a></code>
+
+Methods:
+
+- <code title="post /quickbooks-desktop/currencies">client.qbd.currencies.<a href="./src/resources/qbd/currencies.ts">create</a>({ ...params }) -> Currency</code>
+- <code title="get /quickbooks-desktop/currencies/{id}">client.qbd.currencies.<a href="./src/resources/qbd/currencies.ts">retrieve</a>(id, { ...params }) -> Currency</code>
+- <code title="post /quickbooks-desktop/currencies/{id}">client.qbd.currencies.<a href="./src/resources/qbd/currencies.ts">update</a>(id, { ...params }) -> Currency</code>
+- <code title="get /quickbooks-desktop/currencies">client.qbd.currencies.<a href="./src/resources/qbd/currencies.ts">list</a>({ ...params }) -> CurrencyListResponse</code>
 
 ## Customers
 

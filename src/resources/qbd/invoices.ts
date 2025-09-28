@@ -6,7 +6,8 @@ import { CursorPage, type CursorPageParams } from '../../pagination';
 
 export class Invoices extends APIResource {
   /**
-   * Creates a new invoice.
+   * Creates an invoice to bill a customer when goods or services were delivered
+   * before payment. Use a sales receipt instead if the sale was paid in full.
    *
    * @example
    * ```ts
@@ -305,9 +306,7 @@ export interface Invoice {
    * A/R account.
    *
    * **IMPORTANT**: If this invoice is linked to other transactions, this A/R account
-   * must match the `receivablesAccount` used in all linked transactions. For
-   * example, when refunding a credit card payment, the A/R account must match the
-   * one used in the original credit transactions being refunded.
+   * must match the `receivablesAccount` used in all linked transactions.
    */
   receivablesAccount: Invoice.ReceivablesAccount | null;
 
@@ -1527,7 +1526,8 @@ export namespace Invoice {
       | 'sales_tax_payment_check'
       | 'transfer'
       | 'vendor_credit'
-      | 'ytd_adjustment';
+      | 'ytd_adjustment'
+      | 'unknown';
   }
 
   /**
@@ -1536,9 +1536,7 @@ export namespace Invoice {
    * A/R account.
    *
    * **IMPORTANT**: If this invoice is linked to other transactions, this A/R account
-   * must match the `receivablesAccount` used in all linked transactions. For
-   * example, when refunding a credit card payment, the A/R account must match the
-   * one used in the original credit transactions being refunded.
+   * must match the `receivablesAccount` used in all linked transactions.
    */
   export interface ReceivablesAccount {
     /**
@@ -1925,9 +1923,7 @@ export interface InvoiceCreateParams {
    * will use its default A/R account.
    *
    * **IMPORTANT**: If this invoice is linked to other transactions, this A/R account
-   * must match the `receivablesAccount` used in all linked transactions. For
-   * example, when refunding a credit card payment, the A/R account must match the
-   * one used in the original credit transactions being refunded.
+   * must match the `receivablesAccount` used in all linked transactions.
    */
   receivablesAccountId?: string;
 
@@ -2658,9 +2654,7 @@ export interface InvoiceUpdateParams {
    * will use its default A/R account.
    *
    * **IMPORTANT**: If this invoice is linked to other transactions, this A/R account
-   * must match the `receivablesAccount` used in all linked transactions. For
-   * example, when refunding a credit card payment, the A/R account must match the
-   * one used in the original credit transactions being refunded.
+   * must match the `receivablesAccount` used in all linked transactions.
    */
   receivablesAccountId?: string;
 

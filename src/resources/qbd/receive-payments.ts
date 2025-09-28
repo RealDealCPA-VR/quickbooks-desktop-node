@@ -6,7 +6,10 @@ import { CursorPage, type CursorPageParams } from '../../pagination';
 
 export class ReceivePayments extends APIResource {
   /**
-   * Creates a new receive-payment.
+   * Records a customer payment and optionally applies it to specific invoices or
+   * credits. All allocations must target the same accounts receivable account as
+   * those invoices, and each one has to include a payment amount, discount, or
+   * credit so QuickBooks can close out the balance.
    *
    * @example
    * ```ts
@@ -53,7 +56,9 @@ export class ReceivePayments extends APIResource {
   }
 
   /**
-   * Updates an existing receive-payment.
+   * Updates a received payment. When you resubmit applications to invoices, keep
+   * them on the same accounts receivable account and include the payment amount,
+   * discount, or credit on every allocation you send.
    *
    * @example
    * ```ts
@@ -221,9 +226,7 @@ export interface ReceivePayment {
    * default A/R account.
    *
    * **IMPORTANT**: If this receive-payment is linked to other transactions, this A/R
-   * account must match the `receivablesAccount` used in all linked transactions. For
-   * example, when refunding a credit card payment, the A/R account must match the
-   * one used in the original credit transactions being refunded.
+   * account must match the `receivablesAccount` used in all linked transactions.
    */
   receivablesAccount: ReceivePayment.ReceivablesAccount | null;
 
@@ -482,7 +485,8 @@ export namespace ReceivePayment {
         | 'sales_tax_payment_check'
         | 'transfer'
         | 'vendor_credit'
-        | 'ytd_adjustment';
+        | 'ytd_adjustment'
+        | 'unknown';
     }
   }
 
@@ -775,9 +779,7 @@ export namespace ReceivePayment {
    * default A/R account.
    *
    * **IMPORTANT**: If this receive-payment is linked to other transactions, this A/R
-   * account must match the `receivablesAccount` used in all linked transactions. For
-   * example, when refunding a credit card payment, the A/R account must match the
-   * one used in the original credit transactions being refunded.
+   * account must match the `receivablesAccount` used in all linked transactions.
    */
   export interface ReceivablesAccount {
     /**
@@ -929,9 +931,7 @@ export interface ReceivePaymentCreateParams {
    * will use its default A/R account.
    *
    * **IMPORTANT**: If this receive-payment is linked to other transactions, this A/R
-   * account must match the `receivablesAccount` used in all linked transactions. For
-   * example, when refunding a credit card payment, the A/R account must match the
-   * one used in the original credit transactions being refunded.
+   * account must match the `receivablesAccount` used in all linked transactions.
    */
   receivablesAccountId?: string;
 
@@ -1259,9 +1259,7 @@ export interface ReceivePaymentUpdateParams {
    * will use its default A/R account.
    *
    * **IMPORTANT**: If this receive-payment is linked to other transactions, this A/R
-   * account must match the `receivablesAccount` used in all linked transactions. For
-   * example, when refunding a credit card payment, the A/R account must match the
-   * one used in the original credit transactions being refunded.
+   * account must match the `receivablesAccount` used in all linked transactions.
    */
   receivablesAccountId?: string;
 

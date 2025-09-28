@@ -5,7 +5,9 @@ import * as Core from '../../core';
 
 export class InventoryAdjustments extends APIResource {
   /**
-   * Creates a new inventory adjustment.
+   * Creates an inventory adjustment to correct on-hand quantities or values.
+   * QuickBooks requires single-user mode unless you're on Enterprise with Advanced
+   * Inventory enabled.
    *
    * @example
    * ```ts
@@ -375,7 +377,7 @@ export namespace InventoryAdjustment {
     /**
      * The inventory item associated with this inventory adjustment line.
      */
-    item: Line.Item;
+    item: Line.Item | null;
 
     /**
      * The lot number of the item associated with this inventory adjustment line. Used
